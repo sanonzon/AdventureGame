@@ -5,13 +5,13 @@ import java.io.InputStreamReader;
 import java.util.Collection;
 
 public class Main {
-    private static Collection<Room> rooms = null;
+    private static Collection<Location> locations = null;
     private static String playerName = null;
 
-    private static Room activeRoom = null;
+    private static Location activeLocation = null;
 
     public static void main(String[] args) throws  Exception{
-        rooms = Rooms.initRooms();
+        locations = World.initRooms();
 
         startMessage();
 
@@ -19,10 +19,11 @@ public class Main {
             playerName = reader.readLine();
             printConstantMessage(Constants.HELLO_MSG, playerName);
 
-            activeRoom =  rooms.stream().findFirst().get();
-            activeRoom.announce();
+            activeLocation =  locations.stream().findFirst().get();
+            activeLocation.announce();
 
             while(true){
+                System.out.print(Constants.PRE_INPUT_TEXT);
                 parseInput(reader.readLine());
             }
         }
@@ -37,11 +38,12 @@ public class Main {
 
         // Handle movement
         if(input.startsWith(Constants.CMD_NAV_BASE)) {
-            Room tempRoom = navigateRoom(input);
+            Location tempLocation = navigateRoom(input);
 
-            if(tempRoom!=null){
-                activeRoom=tempRoom;
-                activeRoom.announce();
+            if(tempLocation !=null){
+                System.out.println(); // new line to easier distinguish each input
+                activeLocation = tempLocation;
+                activeLocation.announce();
             }
         }
 
@@ -68,21 +70,24 @@ public class Main {
         System.out.println(String.format(msg, things));
     }
 
-    private static Room navigateRoom(String movement){
-        Room tempRoom = null;
+    private static Location navigateRoom(String movement){
+        Location tempLocation = null;
         if(Constants.CMD_NAV_EAST.equals(movement)){
-            tempRoom = activeRoom.goEast();
+            tempLocation = activeLocation.goEast();
         }
         else if(Constants.CMD_NAV_WEST.equals(movement)){
-            tempRoom = activeRoom.goWest();
+            tempLocation = activeLocation.goWest();
         }
         else if(Constants.CMD_NAV_NORTH.equals(movement)){
-            tempRoom = activeRoom.goNorth();
+            tempLocation = activeLocation.goNorth();
         }
         else if(Constants.CMD_NAV_SOUTH.equals(movement)){
-            tempRoom = activeRoom.goSouth();
+            tempLocation = activeLocation.goSouth();
         }
-        return tempRoom;
+        else{
+            System.out.println(String.format(Constants.CMD_NAV_UNKNOWN, movement));
+        }
+        return tempLocation;
     }
 
 

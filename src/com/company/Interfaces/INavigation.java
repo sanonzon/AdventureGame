@@ -1,11 +1,11 @@
 package com.company.Interfaces;
 
-import com.company.Room;
+import com.company.Location;
 
 public interface INavigation {
-    public Room goNorth();
-    public Room goEast();
-    public Room goSouth();
-    public Room goWest();
+    public Location goNorth();
+    public Location goEast();
+    public Location goSouth();
+    public Location goWest();
 
 }
