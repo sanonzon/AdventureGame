@@ -1,6 +1,4 @@
-package com.company.Interfaces;
-
-import com.company.Location;
+package com.company.Location;
 
 public interface INavigation {
     public Location goNorth();
