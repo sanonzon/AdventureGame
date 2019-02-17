@@ -121,9 +121,9 @@ public  abstract class Location implements INavigation {
     // "Greetings text" for the room
     public void announce() {
         if(firstVisit){
-            System.out.println(description != null ? description : Constants.ROOM_DESCRIPTION_NOT_FOUND);
+            System.out.println(description != null && !description.isEmpty() ? description : Constants.ROOM_DESCRIPTION_NOT_FOUND);
         }else {
-            System.out.println(shortDescription != null ? shortDescription : Constants.ROOM_SHORT_DESCRIPTION_NOT_FOUND);
+            System.out.println(shortDescription != null && !shortDescription.isEmpty()? shortDescription : Constants.ROOM_SHORT_DESCRIPTION_NOT_FOUND);
         }
         printAvailableItems();
         printConnectedPaths();

@@ -30,7 +30,7 @@ public class Constants {
     public static final String HELP_QUIT = "You can quit playing by typing " + CMD_QUIT;
 
     public static final String HELLO_MSG = "Hello %s, welcome to this magical world of wonder! "+HELP_NAV+" You may need to learn more commands as you play the game! (Hint: there is a command \""+CMD_HELP+"\").";
-    public static final  String ROOM_DESCRIPTION_NOT_FOUND = "The light has gone out and you can't see anything, you should go back the way you came";
+    public static final  String ROOM_DESCRIPTION_NOT_FOUND = "There's nothing special about this location.";
     public static final  String ROOM_SHORT_DESCRIPTION_NOT_FOUND = "You have already been here.";
 
     public static final String LOCATION_CONNECTED_LOCATIONS = "There is a %s leading %s";

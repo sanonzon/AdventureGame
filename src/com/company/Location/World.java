@@ -35,6 +35,7 @@ public class World {
 
         Location aHouse = new Room("Farmer house, entrance hall", "Large room of coat hangers",
                 "The house", Location.LastLocation.NORTH, startWest);
+        startWest.setNorthLocation(aHouse);
 
         locations = new ArrayList<>();
         locations.add(startLocation);
