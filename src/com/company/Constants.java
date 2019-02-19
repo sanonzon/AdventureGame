@@ -39,7 +39,7 @@ public class Constants {
     public static final String ITEM_ONE = "an item";
     public static final String LOCATION_GROUND_ROOM = "floor";
     public static final String LOCATION_GROUND_WORLD = "ground";
-    public static final String PRINT_AVAILABLE_ITEMS = "There seems to be %s on the %s.";
+    public static final String PRINT_AVAILABLE_ITEMS = "You notice %s on the %s.";
     public static final String ITEM_NOT_FOUND_PICKUP = "%s is not available for pickup.";
     public static final String ITEM_FOUND_PICKUP = "You put %s into your backpack.";
     public static final String ITEM_MISSING_INVENTORY = "You do not have \"%s\" in your inventory.";

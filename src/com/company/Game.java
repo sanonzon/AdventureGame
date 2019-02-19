@@ -13,6 +13,7 @@ public class Game {
     private static Collection<Location> locations = null;
     private static String playerName = null;
     private static Player player = null;
+    private static boolean runGame = true;
 
 //    private static Location activeLocation = null;
 
@@ -29,7 +30,7 @@ public class Game {
 
             player.moveTo(locations.stream().findFirst().get());
 
-            while(true){
+            while(runGame){
                 System.out.print(Constants.PRE_INPUT_TEXT);
                 parseInput(reader.readLine());
             }
@@ -60,7 +61,7 @@ public class Game {
         }
         else if(Constants.CMD_QUIT.equals(input)){
             System.out.println("GGWP, BYE");
-            System.exit(-1);
+            runGame = false;
         }
         else{
             System.out.println("Invalid navigation command...");
