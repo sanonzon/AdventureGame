@@ -14,7 +14,7 @@ public class Game {
     private static String playerName = null;
     private static Player player = null;
 
-    private static Location activeLocation = null;
+//    private static Location activeLocation = null;
 
     public static void main(String[] args) throws  Exception{
         locations = World.getInstance();
@@ -27,8 +27,7 @@ public class Game {
             printConstantMessage(Constants.HELLO_MSG, playerName);
             System.out.println();
 
-            activeLocation =  locations.stream().findFirst().get();
-            activeLocation.announce();
+            player.moveTo(locations.stream().findFirst().get());
 
             while(true){
                 System.out.print(Constants.PRE_INPUT_TEXT);
@@ -46,13 +45,7 @@ public class Game {
 
         // Handle movement
         if(input.startsWith(Constants.CMD_BASE_NAV)) {
-            Location tempLocation = navigateRoom(trimCommand(input, Constants.CMD_BASE_NAV));
-
-            if(tempLocation !=null){
-                System.out.println(); // new line to easier distinguish each input
-                activeLocation = tempLocation;
-                activeLocation.announce();
-            }
+            navigateRoom(trimCommand(input, Constants.CMD_BASE_NAV));
         }
         // Handle items
         else if(input.startsWith(Constants.CMD_BASE_PICKUP_ITEM)){
@@ -85,22 +78,12 @@ public class Game {
     }
 
     private static Location navigateRoom(String movement){
-        Location tempLocation = null;
-        if(Constants.EAST.equals(movement)){
-            tempLocation = activeLocation.goEast();
-        }
-        else if(Constants.WEST.equals(movement)){
-            tempLocation = activeLocation.goWest();
-        }
-        else if(Constants.NORTH.equals(movement)){
-            tempLocation = activeLocation.goNorth();
-        }
-        else if(Constants.SOUTH.equals(movement)){
-            tempLocation = activeLocation.goSouth();
-        }
-        else{
-            System.out.println(String.format(Constants.CMD_NAV_UNKNOWN, movement));
-        }
+        Location tempLocation = player.getLocation().getConnectedLocations().get(movement);
+       if(tempLocation != null) {
+            player.moveTo(tempLocation);
+        }else{
+           System.out.println(String.format(Constants.CMD_NAV_UNKNOWN, movement));
+       }
         return tempLocation;
     }
 
@@ -116,14 +99,14 @@ public class Game {
     }
 
     private static void pickupItem(String thing) {
-        BaseItem item = activeLocation.getItems().stream().filter(p -> p.getName().equalsIgnoreCase(thing)).findFirst().orElse(null);
+        BaseItem item = player.getLocation().getItems().stream().filter(p -> p.getName().equalsIgnoreCase(thing)).findFirst().orElse(null);
         if(item==null){
             System.out.println(String.format(Constants.ITEM_NOT_FOUND_PICKUP, thing ));
             return;
         }else{
             System.out.println(String.format(Constants.ITEM_FOUND_PICKUP, thing ));
             player.getInventory().add(item);
-            activeLocation.getItems().removeIf(p -> p.getName().equalsIgnoreCase(thing));
+            player.getLocation().getItems().removeIf(p -> p.getName().equalsIgnoreCase(thing));
         }
     }
 

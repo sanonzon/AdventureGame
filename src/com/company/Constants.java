@@ -7,7 +7,7 @@ public class Constants {
     public static final String CMD_BASE_USE_ITEM = "use ";
     public static final String CMD_BASE_LOOK_AT = "look at ";
 
-    public static final String CMD_NAV_UNKNOWN = "'%s' is an invalid navigation.";
+    public static final String CMD_NAV_UNKNOWN = "There is nothing in the direction '%s'.";
     public static final String ROOM_SPLASH_MESSAGE = "You have entered '%s'";
     public static final String PRE_INPUT_TEXT = "What do you want to do? ";
 

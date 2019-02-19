@@ -8,10 +8,10 @@ public class Room extends Location {
         setLocationPathConnector("door");
     }
 
-    public Room(String name, String description, String shortDescription, LastLocation lastLocation, Location location) {
-        super(name, description, lastLocation, location);
-        setLocationPathConnector("door");
-        setShortDescription(shortDescription);
-    }
+//    public Room(String name, String description, String shortDescription, LastLocation lastLocation, Location location) {
+//        super(name, description, lastLocation, location);
+//        setLocationPathConnector("door");
+//        setShortDescription(shortDescription);
+//    }
 
 }

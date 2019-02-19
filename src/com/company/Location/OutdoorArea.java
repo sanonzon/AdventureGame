@@ -8,9 +8,9 @@ public class OutdoorArea extends Location {
         setLocationPathConnector("road");
     }
 
-    public OutdoorArea(String name, String description, String shortDescription, LastLocation lastLocation, Location location) {
-        super(name, description, lastLocation, location);
-        setLocationPathConnector("road");
-        setShortDescription(shortDescription);
-    }
+//    public OutdoorArea(String name, String description, String shortDescription, LastLocation lastLocation, Location location) {
+//        super(name, description);
+//        setLocationPathConnector("road");
+//        setShortDescription(shortDescription);
+//    }
 }
